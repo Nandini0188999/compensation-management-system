@@ -1,14 +1,44 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
+import LoginPage
+from "./pages/LoginPage";
+
+import DashboardPage
+from "./pages/DashboardPage";
+
+import {
+  AuthProvider
+} from "./context/AuthContext";
 
 function App() {
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">
-        Compensation Management System
-      </h1>
-    </div>
+
+    <AuthProvider>
+
+      <BrowserRouter>
+
+        <Routes>
+
+          <Route
+            path="/"
+            element={<LoginPage />}
+          />
+
+          <Route
+            path="/dashboard"
+            element={<DashboardPage />}
+          />
+
+        </Routes>
+
+      </BrowserRouter>
+
+    </AuthProvider>
   );
 }
 
