@@ -5,11 +5,16 @@ import {
 
 import api from "../api/axios";
 
-import Navbar
-from "../components/Navbar";
+
 
 import StatCard
 from "../components/StatCard";
+
+import ProposalTable
+from "../components/ProposalTable";
+
+import CreateProposalForm
+from "../components/CreateProposalForm";
 
 const DashboardPage = () => {
 
@@ -93,7 +98,6 @@ const DashboardPage = () => {
       bg-gray-100
     ">
 
-      <Navbar />
 
       <div className="
         p-8
@@ -221,7 +225,13 @@ const DashboardPage = () => {
           </div>
 
         </div>
-
+        <CreateProposalForm
+        refreshData={fetchData}
+        />
+        <ProposalTable
+        proposals={proposals}
+        refreshData={fetchData}
+        />
       </div>
 
     </div>

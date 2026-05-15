@@ -1,10 +1,25 @@
 from django.urls import path
+
 from .views import (
+    SalaryListView,
     MySalaryView,
-    SalaryListView
+    EmployeeListView
 )
 
 urlpatterns = [
-    path('me/', MySalaryView.as_view()),
-    path('', SalaryListView.as_view()),
+
+    path(
+        '',
+        EmployeeListView.as_view()
+    ),
+
+    path(
+        'salary/',
+        SalaryListView.as_view()
+    ),
+
+    path(
+        'me/',
+        MySalaryView.as_view()
+    ),
 ]

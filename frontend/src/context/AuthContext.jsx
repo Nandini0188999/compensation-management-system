@@ -30,14 +30,14 @@ export const AuthProvider = ({
 
   const logout = () => {
 
-    localStorage.removeItem(
-      "token"
-    );
+  localStorage.removeItem(
+    "token"
+  );
 
-    setToken(null);
+  setToken(null);
 
-    setUser(null);
-  };
+  setUser(null);
+};
 
   return (
     <AuthContext.Provider

@@ -6,6 +6,10 @@ import api from "../api/axios";
 import { AuthContext }
 from "../context/AuthContext";
 
+import {
+  Link
+} from "react-router-dom";
+
 const LoginPage = () => {
 
   const [email, setEmail] =
@@ -37,11 +41,34 @@ const LoginPage = () => {
         );
 
       login(
-        response.data.access
-      );
+  response.data.access
+);
 
-      window.location.href =
-        "/dashboard";
+const userResponse =
+  await api.get(
+    "auth/me/",
+    {
+      headers: {
+        Authorization:
+          `Bearer ${response.data.access}`
+      }
+    }
+  );
+
+if (
+  userResponse.data.role
+  === "ADMIN"
+) {
+
+  window.location.href =
+    "/dashboard";
+}
+
+else {
+
+  window.location.href =
+    "/employee-dashboard";
+}
 
     } catch {
 
@@ -134,7 +161,24 @@ const LoginPage = () => {
         >
           Login
         </button>
+        <p className="
+  mt-4
+  text-center
+">
 
+  Don't have an account?
+
+  <Link
+    to="/register"
+    className="
+      text-blue-600
+      ml-1
+    "
+  >
+    Register
+  </Link>
+
+</p>
       </form>
 
     </div>
